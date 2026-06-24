@@ -1,12 +1,16 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import http from 'http';
 import path from 'path';
 import fs from 'fs';
+import dotenv from 'dotenv';
 import { createServer as createViteServer } from 'vite';
 import { INITIAL_TRANSACTIONS, INITIAL_BUDGET_LIMITS, INITIAL_PRD_SECTIONS } from './src/data';
 
+// Load environment variables from .env file
+dotenv.config();
+
 const app = express();
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || '3000', 10);
 const DB_PATH = path.join(process.cwd(), 'database.json');
 
 interface DbState {
@@ -50,12 +54,12 @@ async function startServer() {
   // --- API ROUTE SPECIFICATIONS ---
 
   // 1. Transactions CRUD
-  app.get('/api/transactions', (req, res) => {
+  app.get('/api/transactions', (_req: Request, res: Response) => {
     const db = loadDb();
     res.json(db.transactions);
   });
 
-  app.post('/api/transactions', (req, res) => {
+  app.post('/api/transactions', (req: Request, res: Response) => {
     const db = loadDb();
     const newTx = req.body;
     
@@ -73,7 +77,7 @@ async function startServer() {
     res.status(201).json(transaction);
   });
 
-  app.delete('/api/transactions/:id', (req, res) => {
+  app.delete('/api/transactions/:id', (req: Request, res: Response) => {
     const db = loadDb();
     const { id } = req.params;
     const originalLength = db.transactions.length;
@@ -88,12 +92,12 @@ async function startServer() {
   });
 
   // 2. Monthly Budget Targets
-  app.get('/api/limits', (req, res) => {
+  app.get('/api/limits', (_req: Request, res: Response) => {
     const db = loadDb();
     res.json(db.limits);
   });
 
-  app.put('/api/limits/:category', (req, res) => {
+  app.put('/api/limits/:category', (req: Request, res: Response) => {
     const db = loadDb();
     const { category } = req.params;
     const { limit } = req.body;
@@ -113,7 +117,7 @@ async function startServer() {
     res.json({ category, limit });
   });
 
-  app.post('/api/limits/reset', (req, res) => {
+  app.post('/api/limits/reset', (_req: Request, res: Response) => {
     const db = loadDb();
     db.limits = INITIAL_BUDGET_LIMITS;
     saveDb(db);
@@ -121,12 +125,12 @@ async function startServer() {
   });
 
   // 3. PRD Requirements Management
-  app.get('/api/prd-sections', (req, res) => {
+  app.get('/api/prd-sections', (_req: Request, res: Response) => {
     const db = loadDb();
     res.json(db.prdSections);
   });
 
-  app.put('/api/prd-sections/:id', (req, res) => {
+  app.put('/api/prd-sections/:id', (req: Request, res: Response) => {
     const db = loadDb();
     const { id } = req.params;
     const { content } = req.body;
@@ -146,7 +150,7 @@ async function startServer() {
   });
 
   // 4. Batch Import and Hard Reset
-  app.post('/api/reset-all', (req, res) => {
+  app.post('/api/reset-all', (_req: Request, res: Response) => {
     const initialState: DbState = {
       transactions: INITIAL_TRANSACTIONS,
       limits: INITIAL_BUDGET_LIMITS,
@@ -156,7 +160,7 @@ async function startServer() {
     res.json({ success: true, message: 'All financial states successfully reset to seeds.' });
   });
 
-  app.post('/api/import', (req, res) => {
+  app.post('/api/import', (req: Request, res: Response) => {
     const { transactions, limits, prdSections } = req.body;
     
     if (!Array.isArray(transactions) || !Array.isArray(limits)) {
@@ -189,7 +193,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

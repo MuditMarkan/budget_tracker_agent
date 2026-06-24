@@ -1,0 +1,162 @@
+{
+  "transactions": [
+    {
+      "description": "ebb",
+      "amount": 333,
+      "type": "income",
+      "category": "Income",
+      "date": "2026-06-24",
+      "id": "tx-1782275923924"
+    },
+    {
+      "id": "tx-1",
+      "description": "Monthly Salary Credit",
+      "amount": 5200,
+      "type": "income",
+      "category": "Income",
+      "date": "2026-06-01",
+      "notes": "Primary employment monthly paycheck"
+    },
+    {
+      "id": "tx-2",
+      "description": "Luxury Apartment Rent",
+      "amount": 1800,
+      "type": "expense",
+      "category": "Rent & Living",
+      "date": "2026-06-02",
+      "notes": "June rent and parking utility"
+    },
+    {
+      "id": "tx-3",
+      "description": "Weekly Organic Grocery",
+      "amount": 184.5,
+      "type": "expense",
+      "category": "Food",
+      "date": "2026-06-15",
+      "notes": "Whole Foods organic grocery stock"
+    },
+    {
+      "id": "tx-4",
+      "description": "Cozy Sushi Dinner Date",
+      "amount": 112.4,
+      "type": "expense",
+      "category": "Food",
+      "date": "2026-06-18",
+      "notes": "Premium sashimi and green tea"
+    },
+    {
+      "id": "tx-5",
+      "description": "Electric & Heating Bill",
+      "amount": 145,
+      "type": "expense",
+      "category": "Utilities",
+      "date": "2026-06-10",
+      "notes": "Power grid summer utility billing"
+    },
+    {
+      "id": "tx-6",
+      "description": "Freelance Design Project",
+      "amount": 850,
+      "type": "income",
+      "category": "Income",
+      "date": "2026-06-20",
+      "notes": "UI landing page design milestone"
+    },
+    {
+      "id": "tx-7",
+      "description": "Premium Audio Streaming",
+      "amount": 14.99,
+      "type": "expense",
+      "category": "Entertainment",
+      "date": "2026-06-05",
+      "notes": "Monthly hi-fi tier subscription"
+    },
+    {
+      "id": "tx-8",
+      "description": "Ergonomic Desk Chair",
+      "amount": 299,
+      "type": "expense",
+      "category": "Rent & Living",
+      "date": "2026-06-22",
+      "notes": "Home office posture correction chair"
+    },
+    {
+      "id": "tx-9",
+      "description": "Eco Subway Commute Card",
+      "amount": 50,
+      "type": "expense",
+      "category": "Transport",
+      "date": "2026-06-03",
+      "notes": "Monthly transit token refill"
+    },
+    {
+      "id": "tx-10",
+      "description": "Summer Wardrobe Outfits",
+      "amount": 210,
+      "type": "expense",
+      "category": "Shopping",
+      "date": "2026-06-12",
+      "notes": "Linen shirts and lightweight trousers"
+    }
+  ],
+  "limits": [
+    {
+      "category": "Food",
+      "limit": 600
+    },
+    {
+      "category": "Rent & Living",
+      "limit": 2200
+    },
+    {
+      "category": "Transport",
+      "limit": 150
+    },
+    {
+      "category": "Utilities",
+      "limit": 200
+    },
+    {
+      "category": "Entertainment",
+      "limit": 250
+    },
+    {
+      "category": "Shopping",
+      "limit": 400
+    },
+    {
+      "category": "Healthcare",
+      "limit": 300
+    },
+    {
+      "category": "Education",
+      "limit": 200
+    },
+    {
+      "category": "Misc",
+      "limit": 150
+    }
+  ],
+  "prdSections": [
+    {
+      "id": "prd-summary",
+      "title": "1. Executive Summary",
+      "content": "### 1.1 Project Overview\nThe **Budget Tracker** is a client-first, highly responsive financial manager designed to empower users with full visibility into their income, expenditures, and visual category budgets. By adhering to local-first architectural principles, it delivers instantaneous interactions and absolute data privacy.\n\n### 1.2 Problem Statement\nMany consumers struggle with maintaining visual discipline over their spending habits. Existing solutions are either too complex, require high-friction external account syncs, or lack in-app documentation detailing their operational requirements and scope guidelines.\n\n### 1.3 Key Value Proposition\n- **Frictionless Onboarding**: Start managing budgets instantly without complex signup procedures.\n- **Aesthetic Financial Visualizations**: Clean, responsive layout highlighting budget thresholds and monthly comparisons.\n- **In-App PRD Explorer**: Integrated product requirements allows developers and product owners to trace features back to specifications instantly.\n- **Durable Client Persistence**: Utilizes standard secure local storage for zero-config persistence.\n"
+    },
+    {
+      "id": "prd-requirements",
+      "title": "2. Functional Requirements",
+      "content": "### 2.1 Transaction Engine\nThe system must support full CRUD operations on individual financial logs:\n- **Type**: Must distinguish between positive cash inflows (**Income**) and outflows (**Expense**).\n- **Categories**: Dynamic associations (e.g., Food, Transport, Rent, Entertainment, Utilities, Healthcare, Shopping, Income, Misc).\n- **Date Constraints**: Date selectors defaulting to current UTC timestamp.\n- **Notes field**: Optional textual metadata to record receipts or custom memos.\n\n### 2.2 Budget Limits & Alerts\nUsers must be able to specify monthly spending ceilings on a per-category basis:\n- **Visual Progress Trackers**: Real-time spending progress bars displaying budget usage ratios.\n- **Dynamic Heat Warnings**: \n  - 🟢 **Under 75%**: Safe zone.\n  - 🟡 **75% - 100%**: Caution zone.\n  - 🔴 **Over 100%**: Threshold breached warning.\n\n### 2.3 Analytics & Interactive Visuals\n- **Donut Chart**: Expense category distribution using cohesive Tailwind-themed palettes.\n- **Monthly Trend Chart**: Double bar charts comparing target limits against actual expenditures per category.\n- **Data Export/Import**: Full backup utility to download raw financial state in JSON, and restore previous states securely.\n"
+    },
+    {
+      "id": "prd-ux-design",
+      "title": "3. UX & Visual Identity",
+      "content": "### 3.1 Design Principles\nThe visual canvas emphasizes elegant negative space, cohesive typography, and professional color coding.\n\n### 3.2 Visual Attributes\n- **Typography**: Inter Sans-Serif font paired with JetBrains Mono for financial figures to ensure absolute readability and tabular alignment.\n- **Color System**: Soft neutrals (gray-50/100 for backgrounds, deep slate-800 for headers) combined with vibrant semantic accents:\n  - Income / Surplus: Emerald Green (emerald-500)\n  - Balance / Target: Slate/Indigo (indigo-600)\n  - Expense / Breaches: Rose/Red (rose-500)\n\n### 3.3 Micro-interactions\n- Framer Motion slide-overs and expanders for transaction entry modals.\n- Interactive hover feedback on table rows and budget progress cards.\n"
+    },
+    {
+      "id": "prd-roadmap",
+      "title": "4. Future Product Roadmap",
+      "content": "### Phase 2: Multi-Device Sync\n- Integration with Firebase Firestore database using the platform's `firebase-integration` capability for cloud persistence.\n- OAuth user authentication for secure cross-device access.\n\n### Phase 3: AI Financial Advisory\n- Integration with the Gemini SDK (via `@google/genai`) to generate automated weekly spending insights, anomaly alerts, and recommendations to save money based on transaction history.\n\n### Phase 4: Bank Account Aggregation\n- Open-banking API integration to feed real-time transactions automatically into the ledger.\n"
+    }
+  ]
+}
