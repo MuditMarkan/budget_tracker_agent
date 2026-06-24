@@ -1,0 +1,8 @@
+{
+  "name": "Budget Tracker",
+  "description": "A modern, intuitive budget tracking application with complete built-in Product Requirement Documents (PRD) and financial analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
